@@ -1,0 +1,1 @@
+# maverick-compact-text-editor
