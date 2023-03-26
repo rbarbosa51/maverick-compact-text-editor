@@ -43,6 +43,20 @@ module.exports = () => {
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
         },
+        {
+          src: path.resolve('favicon.ico'),
+          sizes: [48]
+        },
+        {
+          src: path.resolve('src/images/apple.png'),
+          sizes: [180]
+        },
+        {
+          src: path.resolve('src/images/maskable_icon.png'),
+          sizes: [128,256,512],
+          destination: path.join('assets', 'icons'),
+          purpose: "any maskable"
+        }
       ],
     }),
       
