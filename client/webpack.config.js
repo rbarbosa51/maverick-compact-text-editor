@@ -25,7 +25,7 @@ module.exports = () => {
      // TODO: Add InjectManifest Plugin
      new InjectManifest({
       swSrc: './src-sw.js',
-      swDest: 'service-worker.js'
+      swDest: './src-sw.js'
      }),
      new WebpackPwaManifest({
       fingerprints: false,
