@@ -1,4 +1,5 @@
 import { openDB } from 'idb';
+import { header } from './header';
 
 const initdb = async () =>
   openDB('mcte', 1, {
@@ -9,6 +10,7 @@ const initdb = async () =>
       }
       db.createObjectStore('mcte', { keyPath: 'id', autoIncrement: true });
       console.log('mcte database created');
+
     },
   });
 
@@ -33,6 +35,11 @@ export const getDb = async () => {
   const result = await request;
   //debug
   console.log('result', result);
+  console.log('Size of result is', result.length);
+  // if (result.length === 0) {
+  //   result[0].content = header;
+  //   console.log('Header input');
+  // }
   return result;
 }
 

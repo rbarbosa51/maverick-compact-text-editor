@@ -32,7 +32,7 @@ module.exports = () => {
       inject: true,
       name: 'Maverick Compact Text Editor',
       short_name: 'MaverickTextEditor',
-      description: 'This is a cool text editor',
+      description: 'This is the Maverick Compact Text Editor. It is a very cool text editor. You should definately install it into your system',
       background_color: '#272822',
       theme_color: '#272822',
       start_url: './',

@@ -5,8 +5,6 @@ import { header } from './header';
 export default class {
   constructor() {
     const localData = localStorage.getItem('content');
-
-    // check if CodeMirror is loaded
     if (typeof CodeMirror === 'undefined') {
       throw new Error('CodeMirror is not loaded');
     }
@@ -25,16 +23,12 @@ export default class {
     // When the editor is ready, set the value to whatever is stored in indexeddb.
     // Fall back to localStorage if nothing is stored in indexeddb, and if neither is available, set the value to header.
     getDb().then((data) => {
-      /*if (data.length === 0) {
-        console.log('No data');
-        this.editor.setValue(header);
-      } else {
-        console.info('Loaded data from IndexedDB, injecting into editor', data);
-        this.editor.setValue(data || localData);
-      }*/
-      console.info('Loaded data from IndexedDB, injecting into editor', data);
-      console.log(`Content is: ${data[0].content}`);
-      this.editor.setValue(data[0].content || localData || header);
+      
+      console.info('Loaded data from IndexedDB, injecting into editor');
+      const newContent = data[0]?.content || header;
+      this.editor.setValue(newContent || localData);
+      
+      
     });
 
     this.editor.on('change', () => {
@@ -44,6 +38,11 @@ export default class {
     // Save the content of the editor when the editor itself is loses focus
     this.editor.on('blur', () => {
       console.log('The editor has lost focus');
+      putDb(1,localStorage.getItem('content'));
+    });
+    // Save the content whenever there is a mouse down event - more convenient
+    this.editor.on('mousedown', () => {
+      console.log('mouse down event');
       putDb(1,localStorage.getItem('content'));
     });
   }
