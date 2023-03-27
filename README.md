@@ -26,7 +26,9 @@ npm run start:dev
 
 ## Usage
 
-It can be viewed either as a web app or, if you prefer install the app to your physical device. To install run start:dev then go to localhost:3000 and hit the **Install** button
+It can be viewed either as a web app or, if you prefer install the app to your physical device. 
+To install run start:dev then go to localhost:3000 and hit the **Install** button.
+To view online, visit the following site [https://maverick-editor.herokuapp.com/](https://maverick-editor.herokuapp.com/)
 
 ## ScreenShot
 
