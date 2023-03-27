@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const { offlineFallback,warmStrategyCache } = require("workbox-recipes");
+const { offlineFallback, warmStrategyCache } = require("workbox-recipes");
 const { StaleWhileRevalidate } = require("workbox-strategies");
 const { CacheFirst } = require("workbox-strategies");
 const { registerRoute } = require("workbox-routing");
@@ -23,17 +23,27 @@ const pageCache = new CacheFirst({
 });
 
 warmStrategyCache({
-  urls: ["/index.html", "/", "/manifest.json", "/assets/icons/icon_48x48.ico", "/assets/icons/icon_96x96.png", "/assets/icons/icon_128x128.png"],
+  urls: [
+    "/index.html",
+    "/",
+    "/manifest.json",
+    "/assets/icons/icon_48x48.ico",
+    "/assets/icons/icon_96x96.png",
+    "/assets/icons/icon_128x128.png",
+  ],
   strategy: pageCache,
 });
 //offlineFallback();
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+registerRoute(({ request }) => request.mode === "navigate", pageCache);
 
 // TODO: Implement asset caching
 registerRoute(
   // Here we define the callback function that will filter the requests we want to cache (in this case, JS and CSS files)
-  ({ request }) => ["style", "script", "manifest", "worker", "image"].includes(request.destination),
+  ({ request }) =>
+    ["style", "script", "manifest", "worker", "image"].includes(
+      request.destination
+    ),
   new StaleWhileRevalidate({
     // Name of the cache storage.
     cacheName: "asset-cache",
